@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>RSA public key encrypt</title>
+  </head>
+  <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsencrypt/3.0.0/jsencrypt.min.js"></script>
+    <script>
+       // public key
+        const publicKey = "-----BEGIN RSA Public Key-----\n"
+                        +"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDMYuA+RSA1XLJQhk/AC/ruhc64\n"
+                        +"m9NVx3xDZF7YhKkZRAS5w/bvK06kDmrBYySj0qJxrEvwpb+ux0W0b4VDkpuJxCIv\n"
+                        +"oXQzK+YCN8Lt1KFlCaO8ioDfltRF0FvGHQwyhmhfl1lazAvlY35CID0bWcQdECC2\n"
+                        +"R7Oqi5e4JxBGbMFEQQIDAQAB\n"
+                        +"-----END RSA Public Key-----";
+
+        // encrypt func with public key
+        function encryptWithPublicKey(message) {
+            const encryptor = new JSEncrypt();
+            encryptor.setPublicKey(publicKey);
+            const encrypted = encryptor.encrypt(message);
+            return encrypted;
+        }
+
+        // test
+        const message = "Hello Worldsssssss!";
+        const encryptedMessage = encryptWithPublicKey(message);
+        console.log(encryptedMessage);
+    </script>
+  </body>
+</html>
